@@ -1,0 +1,11 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea
+*.iml
+ropczyce
+ropczyce2/node_modules
+.htaccess
+action.php
+check.php
+getData.html
+index.html
+info.php
