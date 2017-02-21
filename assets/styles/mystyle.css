@@ -1,0 +1,88 @@
+body {
+  background-color: #DBD4BA;
+}
+footer {
+  padding-top: 4em;
+  padding-bottom: 2em;
+}
+.back-darken {
+  background-color: #c7bea2 !important;
+}
+.back-dark {
+  background-color: #b8b091 !important;
+}
+.back-main {
+  background-color: #DBD4BA !important;
+}
+.modal-content {
+  background-color: #DBD4BA;
+}
+.navbar {
+  border: none;
+  min-height: 4em;
+  min-width: 100%;
+}
+.navbar-main {
+  padding: 3px 0;
+  color: #3B5998;
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'lucida grande', tahoma, verdana, arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 16.6333px;
+  text-align: left;
+  text-decoration: none;
+}
+.obsadzona {
+  padding-left: 2em;
+  font-weight: bold;
+  color: green;
+}
+.nieobsadzona {
+  padding-left: 2em;
+  color: red;
+}
+.stacje {
+  margin-top: 2em;
+}
+.stacja {
+  font-size: 14px;
+  padding-top: 0.3em;
+}
+.stacja a {
+  color: black;
+}
+.stacja a:hover {
+  color: black;
+}
+.top-mar-2 {
+  margin-top: 2em;
+}
+.angular-google-map-container {
+  height: 600px;
+}
+@media only screen and (max-width: 768px) {
+  .angular-google-map-container {
+    height: 350px;
+  }
+}
+@media only screen and (max-width: 375px) {
+  .no-padding {
+    padding: 0;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .mediaVisible {
+    display: none;
+  }
+}
+#menuAsideButton {
+  display: none;
+}
+@media only screen and (max-width: 768px) {
+  #menuAsideButton {
+    display: inline-block;
+    float: right;
+    margin-right: 1.5em;
+    margin-top: 1em;
+  }
+}

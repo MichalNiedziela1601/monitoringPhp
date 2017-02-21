@@ -1,0 +1,32 @@
+<div id="menuSide">
+    <div class="panel panel-default">
+        <div class="panel-heading back-dark text-center"><p class="lead">Stacje wodne:</p></div>
+        <div class="panel-body back-darken">
+            <div ng-repeat="station in $ctrl.stations.wodne" class="stacja">
+
+                <div ng-if="station.id_ppwr !== 'SIBY'">
+                    <div><a ng-href="/measure/{{station.id_ppwr}}">{{$index+1}} {{station.miejsce}}</a></div>
+                    <div ng-switch="station.obsadzona">
+                        <div ng-switch-when="1" class="obsadzona">Stacja obsadzona</div>
+                        <div ng-switch-when="0" class="nieobsadzona">Stacja nieobsadzona</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading back-dark text-center"><p class="lead">Stacje opadowe:</p></div>
+        <div class="panel-body back-darken">
+            <div ng-repeat="station in $ctrl.stations.opadowe" class="stacja">
+                <div><a ng-href="/measure/{{station.id_ppwr}}">{{$index+1}} {{station.miejsce}}</a></div>
+                <div ng-switch="station.obsadzona">
+                    <div ng-switch-when="1" class="obsadzona">Stacja obsadzona</div>
+                    <div ng-switch-when="0" class="nieobsadzona">Stacja nieobsadzona</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div></div></div>
