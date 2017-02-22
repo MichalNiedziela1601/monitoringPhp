@@ -2,7 +2,7 @@
 {
     'use strict';
 
-    function MenuSideController($uibModalInstance,$localStorage)
+    function MenuSideController($uibModalInstance,StationsFactory)
     {
         var ctrl = this;
         function getStations()
@@ -15,7 +15,7 @@
 
         function init()
         {
-            ctrl.stations = $localStorage.stations;
+            getStations();
         }
         ctrl.ok = function (e)
         {

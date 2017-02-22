@@ -5,7 +5,7 @@
 
         return {
             getStations: function () {
-                return $http.get('services/php/station.php?action=getStations').then(function (result) {
+                return $http.get('services/php/station.php').then(function (result) {
                     var stations = {
                         wodne: [],
                         opadowe: []
@@ -17,21 +17,10 @@
                             stations.opadowe.push(station)
                         }
                     });
+                    console.log(stations);
                     return stations;
                 })
             },
-
-            checkObsadzona: function (nazwa_punktu,typ) {
-                var data = {
-                    'typ' : typ,
-                    'nazwa_punktu' : nazwa_punktu
-                };
-                return $http.post('services/php/station.php?action=checkObsadzona', data).then(function (result) {
-                    console.log(result);
-
-                    return result;
-                })
-            }
 
 
         };

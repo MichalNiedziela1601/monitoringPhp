@@ -67,10 +67,10 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-3 col-lg-2">
+            <div class="col-md-3 col-lg-3 col-sm-3">
                 <menu-stations stations="menuCtrl.stations" class="mediaVisible"></menu-stations>
             </div>
-            <div class="col-md-9 col-lg-10">
+            <div class="col-md-9 col-lg-9 col-sm-9">
                 <div ng-view class="container-fluid"></div>
             </div>
         </div>
@@ -124,12 +124,11 @@
 <!--config-->
 <script src="app.js"></script>
 <script src="app.config.js"></script>
-<script src="app.run.js"></script>
 <script src="app.routes.js"></script>
 
 <!--controllers-->
 <script src="mainView/main-view.controller.js"></script>
-<script src="measurePoint/measurePoint.controller.js"></script>
+<script src="punkt_wodny/punktWodny.controller.js"></script>
 <script src="menuNavbar/menu.controller.js"></script>
 <script src="menuNavbar/menu-side.controller.js"></script>
 <!--services-->

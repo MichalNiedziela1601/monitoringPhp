@@ -13,8 +13,8 @@
                 .when('/', {
                     templateUrl: 'mainView/mainView.controller.html', controller: 'MainViewController', controllerAs: 'mainViewCtrl'
                 })
-                .when('/measure/:id', {
-                    templateUrl: '/measurePoint/measurePoint.tpl.html', controller: 'MeasurePointController', controllerAs: 'measurePointCtrl'
+                .when('/punkt_wodny/:id', {
+                    templateUrl: '/punkt_wodny/punktWodny.tpl.html', controller: 'MeasurePointController', controllerAs: 'measurePointCtrl'
                 });
 
 

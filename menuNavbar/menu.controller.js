@@ -1,7 +1,7 @@
 (function(){
     'use strict';
 
-    function MenuController($aside, $localStorage){
+    function MenuController($aside, StationsFactory){
         var ctrl = this;
 
         ctrl.asideState = {
@@ -27,17 +27,17 @@
                 controllerAs: 'menuSide'
             }).result.then(postClose, postClose);
         };
-       /* function getStations()
+        function getStations()
         {
             StationsFactory.getStations().then(function (data)
             {
                 ctrl.stations = data;
             });
-        }*/
+        }
 
         function init()
         {
-            ctrl.stations = $localStorage.stations;
+            ctrl.stations = getStations();
         }
         init();
 

@@ -1,4 +1,4 @@
-/**
- * Created by sunday on 2/5/17.
- */
-angular.module('ropczyceMon',['ngRoute']);
+(function(){
+    'use strict';
+    angular.module('monitoring', ['ngRoute','uiGmapgoogle-maps', 'ui.bootstrap', 'ngAside','ngResource']);
+})();

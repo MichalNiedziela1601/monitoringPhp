@@ -2,13 +2,11 @@
 .idea
 *.iml
 ropczyce
-ropczyce2/node_modules
 .htaccess
 action.php
 check.php
 getData.html
 info.php
-ropczyce2/bower_components
 /bower_components/
 /monitoring/
 /ropczyce2/
