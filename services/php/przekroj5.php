@@ -8,6 +8,7 @@
 
 
 include 'config.php';
+$connect = connect();
 //***poczatek 2008.10.16
 //wyœwietlanie delty pomiaru $tmp_delta_p = 1 albo delty godzinnej $tmp_delta_h = 1
 $tmp_delta_p = 1;
@@ -21,6 +22,8 @@ $tmp_delty_wys_s = 0;
 //max wartosc delt na wykresach 1 dla 100 mm ; 2 dla 200
 $tmp_delty_wys_max_wykresu = 2;
 //**koniec 2008.10.16
+
+
 
 function get_data($data)
 {
@@ -225,7 +228,7 @@ $punkty = "";
 //include 'config.php';
 //require 'funk.php';
 
-$connect = connect();
+
 $result = mysqli_query($connect,"SELECT * FROM `wizu` WHERE `id_ppwr`='{$prze}' LIMIT 0 , 1");
 
 while($wiersz= mysqli_fetch_array ($result)){
@@ -502,8 +505,14 @@ ImageString ($image,$czcionka,$margines*1.2,$margines*(7/4),$hnpmd,$czarny);
 
 
 // flush image
-header('Content-type: image/png');
-return imagepng($image);
+//header('Content-type: image/png');
+//echo imagepng($image);
+//imagedestroy($image);
+$fileName = 'image.png';
+imagepng($image, $fileName);
 imagedestroy($image);
+$base64Image = base64_encode(file_get_contents($fileName));
+echo $base64Image;
+unlink($fileName);
 
 ?>

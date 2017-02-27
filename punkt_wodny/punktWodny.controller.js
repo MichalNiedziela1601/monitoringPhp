@@ -8,7 +8,9 @@
         ctrl.id = $routeParams.id;
 
         Przekroj.getImage(ctrl.id).then(function (data) {
-            console.log(data);
+            ctrl.image = data;
+        }).catch(function(error){
+            console.log(error);
         })
     }
     angular.module('monitoring')

@@ -6,9 +6,8 @@
 
     function Przekroj($http){
         this.getImage = function (prze) {
-            return $http.get('php/przekroj.php', { params: { prze: prze}}).then(function (response) {
-                console.log(response);
-                return response;
+            return $http.get('services/php/przekroj5.php', { params: { prze: prze}}).then(function (response) {
+                return response.data;
             })
         }
     }
