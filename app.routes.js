@@ -6,7 +6,7 @@
     {
         $locationProvider.hashPrefix('');
         $locationProvider.html5Mode({
-            enabled: true, requireBase: false
+            enabled: true
         });
 
         $routeProvider

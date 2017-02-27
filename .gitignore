@@ -2,7 +2,6 @@
 .idea
 *.iml
 ropczyce
-.htaccess
 action.php
 check.php
 getData.html

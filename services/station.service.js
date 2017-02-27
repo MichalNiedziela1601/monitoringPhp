@@ -6,6 +6,7 @@
         return {
             getStations: function () {
                 return $http.get('services/php/station.php').then(function (result) {
+
                     var stations = {
                         wodne: [],
                         opadowe: []

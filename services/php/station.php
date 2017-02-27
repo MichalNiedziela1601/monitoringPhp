@@ -31,9 +31,11 @@ if ($result = mysqli_query($connect, $sql)) {
         $cr++;
     }
 }
+
+
 $cr = 0;
 if ($query = mysqli_query($connect, "SELECT `wizu`.id_ppwr from `wizu`,`sppwr`,`sppwr2` where `wizu`.id_ppwr=`sppwr`.miejsce_zamocowania AND 
-`sppwr`.identyfikator=`sppwr2`.id_sppwr AND `sppwr2`.potwierdzenieObsadzenia=1;")
+`sppwr`.identyfikator=`sppwr2`.id_sppwr AND `sppwr2`.potwierdzenieObsadzenia=1 ORDER BY `wizu`.lp, `wizu`.typ ASC;")
 ) {
     $count = mysqli_num_rows($query);
     while ($row = mysqli_fetch_array($query)) {
@@ -45,7 +47,7 @@ if ($query = mysqli_query($connect, "SELECT `wizu`.id_ppwr from `wizu`,`sppwr`,`
 
 }
 
-if ($query = mysqli_query($connect, "SELECT `wizu`.id_ppwr from `wizu`,`spoa`,`spoa2` where `wizu`.id_ppwr=`spoa`.miejsce_zamocowania AND `spoa`.identyfikator=`spoa2`.id_spoa AND `spoa2`.potwierdzenieObsadzenia=1;")) {
+if ($query = mysqli_query($connect, "SELECT `wizu`.id_ppwr from `wizu`,`spoa`,`spoa2` where `wizu`.id_ppwr=`spoa`.miejsce_zamocowania AND `spoa`.identyfikator=`spoa2`.id_spoa AND `spoa2`.potwierdzenieObsadzenia=1 ORDER BY `wizu`.lp, `wizu`.typ ASC;")) {
     $count = mysqli_num_rows($query);
     $cr++;
     while ($row = mysqli_fetch_array($query)) {
