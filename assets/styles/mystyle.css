@@ -86,3 +86,69 @@ footer {
     margin-top: 1em;
   }
 }
+thead th {
+  vertical-align: middle;
+  text-align: center;
+}
+.table thead,
+.table tbody,
+.table tr,
+.table td,
+.table th {
+  border: 2px solid black !important;
+  text-align: center;
+}
+.mar-top-0 {
+  margin-top: 0px;
+}
+.mar-top-1 {
+  margin-top: 10px;
+}
+.mar-top-2 {
+  margin-top: 20px;
+}
+.mar-top-3 {
+  margin-top: 30px;
+}
+.mar-top-4 {
+  margin-top: 40px;
+}
+.mar-top-5 {
+  margin-top: 50px;
+}
+.mar-top-6 {
+  margin-top: 60px;
+}
+.mar-top-7 {
+  margin-top: 70px;
+}
+.mar-top-8 {
+  margin-top: 80px;
+}
+.mar-top-0 {
+  margin-top: 0px;
+}
+.mar-top-1 {
+  margin-top: 10px;
+}
+.mar-top-2 {
+  margin-top: 20px;
+}
+.mar-top-3 {
+  margin-top: 30px;
+}
+.mar-top-4 {
+  margin-top: 40px;
+}
+.mar-top-5 {
+  margin-top: 50px;
+}
+.mar-top-6 {
+  margin-top: 60px;
+}
+.mar-top-7 {
+  margin-top: 70px;
+}
+.mar-top-8 {
+  margin-top: 80px;
+}

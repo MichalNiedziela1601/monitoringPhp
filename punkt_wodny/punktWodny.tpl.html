@@ -1,8 +1,33 @@
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 mar-top-1">
         <img ng-src="/assets/img/{{measurePointCtrl.id}}.jpg" class="img-responsive">
     </div>
-    <div class="col-md-4">
-        <img ng-src="data:image/png;base64,{{measurePointCtrl.image}}" class="img-responsive">
+    <div class="col-md-3 mar-top-1">
+        <img ng-src="data:image/png;base64,{{measurePointCtrl.image}}" class="img-responsive top-mar-1">
+    </div>
+
+    <div class="col-md-3 mar-top-1">
+        <table class="table table-condensed top-mar-1">
+            <thead>
+            <tr>
+                <th rowspan="2"><p>Data pomiaru</p> (gg:mm - dd.mm)</th>
+                <th colspan="2">Wartość pomiaru [cm]</th>
+            </tr>
+            <tr>
+                <th>Wysokość lustra</th>
+                <th>Delta (przyrost)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="result in measurePointCtrl.tableResult.wyniki | limitTo: 9">
+                <td>{{result.czas | date : 'HH:mm - dd.MM'}}</td>
+                <td>{{result.wartosc}}</td>
+                <td>{{result.delta}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <div >
+            <p></p>
+        </div>
     </div>
 </div>

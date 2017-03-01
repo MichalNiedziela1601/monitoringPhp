@@ -7,6 +7,7 @@ ExpiresByType application/x-javascript A2592000
 ExpiresByType application/javascript A2592000
 ExpiresByType text/css A604800
 
+AddType text/css .css
 <IfModule mod_rewrite.c>
     RewriteEngine on
     RewriteCond %{REQUEST_FILENAME} -s [OR]

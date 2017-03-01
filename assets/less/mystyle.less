@@ -101,3 +101,38 @@ display: none;
   margin-top: 1em;
 })
 }
+
+thead {
+  th {
+    vertical-align: middle;
+    text-align: center;
+  }
+}
+
+.border() {
+  border: 2px solid black !important;
+}
+.table {
+  thead, tbody, tr, td, th {
+    .border();
+    text-align: center;
+  }
+}
+
+.generate-pd-top(@n, @i: 0) when (@i =< @n) {
+  .pd-top-@{i} {
+    padding-top: (@i * 10px);
+  }
+  .generate-pd-top(@n, (@i + 1));
+}
+
+.generate-mar-top(8);
+
+.generate-mar-top(@n, @i: 0) when (@i =< @n) {
+  .mar-top-@{i} {
+    margin-top: (@i * 10px);
+  }
+  .generate-mar-top(@n, (@i + 1));
+}
+
+.generate-mar-top(8);
