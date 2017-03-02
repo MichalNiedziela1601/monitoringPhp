@@ -9,7 +9,7 @@ $d_0t = get_data_db($czas_aktu);
 $d_1t = get_data_add_h_22($czas_aktu);
 //$pomiary_h_t[];
 
-$p0 = 0;
+/*$p0 = 0;
 $p1 = 0;
 $t0 = 0;
 $t1 = 0;
@@ -18,7 +18,7 @@ $t1 = 0;
 //
 //echo "<tr><td>Wysokosc lustra</td><td>Delta (przyrost)</td></tr>";
 
-$k = 0;
+$k = 0;*/
 
 $table = array();
 

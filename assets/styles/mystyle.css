@@ -152,3 +152,19 @@ thead th {
 .mar-top-8 {
   margin-top: 80px;
 }
+.poziom_ostrz {
+  background-color: #fa0;
+  color: #000;
+}
+.poziom_alarm {
+  background-color: #f00;
+  color: #000;
+}
+.wykres_h1 {
+  height: 270px;
+  max-width: 100%;
+}
+.image-contener > img {
+  max-height: 350px;
+  width: 100%;
+}

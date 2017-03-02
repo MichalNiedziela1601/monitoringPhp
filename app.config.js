@@ -13,4 +13,5 @@
     angular.module('monitoring')
         .config( config);
 
+
 })();
