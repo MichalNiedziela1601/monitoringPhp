@@ -65,18 +65,36 @@
     <!--</form>-->
     <!--</div>-->
 
-    <div class="col-md-11">
-        <button ng-click="measurePointCtrl.pickerBoth.minus1h()" class="btn btn-primary pull-left">Wstecz 1 godz</button>
-        <button ng-click="measurePointCtrl.pickerBoth.minus30()" class="btn btn-primary pull-left">Wstecz 30 min</button>
+    <div class="col-md-11 mar-top-1">
+        <div class="col-md-3">
+            <button ng-click="measurePointCtrl.minus1h()"
+                    class="btn btn-primary pull-left">Wstecz 1 godz
+            </button>
+            <button ng-click="measurePointCtrl.minus30()"
+                    class="btn btn-primary pull-left">Wstecz 30 min
+            </button>
+        </div>
 
-        <button ng-click="measurePointCtrl.pickerBoth.plus1h()" class="btn btn-primary pull-right">Do przodu 1 godz</button>
-        <button ng-click="measurePointCtrl.pickerBoth.plus30()" class="btn btn-primary pull-right">Do przodu 30 min</button>
+        <div class="col-md-2 col-md-offset-2">
+            <button ng-click="measurePointCtrl.now()"
+                    class="btn btn-primary">Stan aktualny
+            </button>
+        </div>
 
+
+        <div class="col-md-3 col-md-offset-2">
+            <button ng-click="measurePointCtrl.plus1h()"
+                    class="btn btn-primary pull-right">Do przodu 1 godz
+            </button>
+            <button ng-click="measurePointCtrl.plus30()"
+                    class="btn btn-primary pull-right">Do przodu 30 min
+            </button>
+        </div>
     </div>
 
 
     <div class="col-md-8 mar-top-1">
-        <form class="form-inline" ng-submit="measurePointCtrl.getWykresHwithDate()">
+        <form class="form-inline" ng-submit="measurePointCtrl.submit()">
             <div class="form-group">
                 <label class="col-sm-2 control-label">Data</label>
                 <div class="col-sm-10">
@@ -120,4 +138,8 @@
 
     </div>
 </div>
+<div class="row">
+    <div class="col-md-11 mar-top-2 mar-bottom-3">
+        <img ng-src="data:image/png;base64,{{measurePointCtrl.wykresD}}"
+             class="img-responsive top-mar-1 wykres_h1"></div>
 </div>

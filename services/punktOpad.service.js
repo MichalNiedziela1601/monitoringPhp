@@ -1,25 +1,27 @@
 /**
- * Created by sunday on 2/26/17.
+ * Created by sunday on 03.03.17.
  */
-(function () {
+(function(){
     'use strict';
 
-    function Przekroj($http) {
-        this.getImage = function (prze) {
-            return $http.get('services/php/przekroj5.php', {params: {prze: prze}}).then(function (response) {
-                return response.data;
-            })
-        };
+    function PunktOpad($http){
 
-        this.getTable = function (prze) {
-            return $http.get('services/php/tabele2.php', {params: {prze: prze}})
-                .then(function (response) {
+        this.getOpadInt = function(prze){
+            return $http.get('services/php/opadint.php', { params: { prze: prze}})
+                .then(function(response){
                     return response.data;
                 })
         };
 
+        this.getTable = function(prze){
+            return $http.get('services/php/tabeleo.php', { params: { prze: prze}})
+                .then(function(response){
+                    console.log('response', response.data);
+                    return response.data
+                })
+        };
         this.getTableWithDate = function(prze, year,month,day,hour,minutes){
-            return $http.get('services/php/tabele2.php', {
+            return $http.get('services/php/tabeleo.php', {
                 params: {
                     prze: prze,
                     rok: year,
@@ -34,7 +36,7 @@
         };
 
         this.getWykresH = function (prze) {
-            return $http.get('services/php/wykres_h1.php', {params: {prze: prze}}).then(function (response) {
+            return $http.get('services/php/wykres_o1.php', {params: {prze: prze}}).then(function (response) {
                 return response.data;
             })
         };
@@ -42,7 +44,7 @@
         this.getWykresHwithDate = function (prze, year, month, day, hour, minutes) {
 
 
-            return $http.get('services/php/wykres_h1.php',
+            return $http.get('services/php/wykres_o1.php',
                 {
                     params: {
                         prze: prze,
@@ -59,7 +61,7 @@
         };
 
         this.getWykresD = function (prze) {
-            return $http.get('services/php/wykres_d1.php', {params: {prze: prze}}).then(function (response) {
+            return $http.get('services/php/wykres_o2h.php', {params: {prze: prze}}).then(function (response) {
                 return response.data;
             })
         };
@@ -67,7 +69,7 @@
         this.getWykresDwithDate = function (prze, year, month, day, hour, minutes) {
 
 
-            return $http.get('services/php/wykres_d1.php',
+            return $http.get('services/php/wykres_o2h.php',
                 {
                     params: {
                         prze: prze,
@@ -85,7 +87,6 @@
     }
 
     angular.module('monitoring')
-        .service('Przekroj', Przekroj);
-
+        .service('PunktOpad',  PunktOpad);
 
 })();

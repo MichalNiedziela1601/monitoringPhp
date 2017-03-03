@@ -1,5 +1,15 @@
 <div id="menuSide">
     <div class="panel panel-default">
+        <div class="panel-heading back-dark text-center"><p class="lead">Menu:</p></div>
+        <div class="panel-body back-darken">
+            <ul class="menu">
+            <li><a href="/">Strona główna</a></li>
+            <li><a href="/">Zestawienie wykresów i przekrojów</a></li>
+            <li><a href="/">Historia - zestawienie wykresów</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="panel panel-default">
         <div class="panel-heading back-dark text-center"><p class="lead">Stacje wodne:</p></div>
         <div class="panel-body back-darken">
             <div ng-repeat="station in $ctrl.stations.wodne" class="stacja">

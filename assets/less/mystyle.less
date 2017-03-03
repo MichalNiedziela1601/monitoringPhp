@@ -126,7 +126,7 @@ thead {
   .generate-pd-top(@n, (@i + 1));
 }
 
-.generate-mar-top(8);
+.generate-pd-top(8);
 
 .generate-mar-top(@n, @i: 0) when (@i =< @n) {
   .mar-top-@{i} {
@@ -137,6 +137,14 @@ thead {
 
 .generate-mar-top(8);
 
+.generate-mar-bottom(@n, @i: 0) when (@i =< @n) {
+  .mar-bottom-@{i} {
+    margin-bottom: (@i * 10px);
+  }
+  .generate-mar-bottom(@n, (@i + 1));
+}
+
+.generate-mar-bottom(8);
 .poziom_ostrz {
   background-color: #fa0;
   color: #000;
@@ -156,6 +164,24 @@ thead {
   > img {
     max-height: 350px;
     width: 100%;
+  }
+}
+
+.image-contener2 {
+  max-width: 80% !important;
+}
+
+.panel-heading {
+  padding: 4px 15px 0px 15px;
+}
+
+.menu {
+  li {
+    margin-bottom: 4px;
+    a {
+      color: black;
+
+    }
   }
 }
 
