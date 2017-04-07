@@ -1,28 +1,29 @@
 (function () {
-    'use strict';
-    function MeasurePointController($routeParams, Przekroj) {
+    "use strict";
+
+    function PunktOpadowyController($routeParams, PunktOpad){
         var ctrl = this;
         ctrl.id = $routeParams.id;
         ctrl.isOpen = false;
 
-        function getImage() {
-            Przekroj.getImage(ctrl.id).then(function (data) {
+        function getOpadInt() {
+            PunktOpad.getOpadInt(ctrl.id).then(function (data) {
                 ctrl.image = data;
             }).catch(function (error) {
                 console.log(error);
             });
         }
 
-
         function getTable() {
-            Przekroj.getTable(ctrl.id)
+            PunktOpad.getTable(ctrl.id)
                 .then(function (result) {
                     ctrl.tableResult = result;
                     ctrl.tableResult.wyniki.map(function (obj, index) {
-                        var wynik = parseInt(obj.wartosc);
+                        var wynik = parseFloat(obj.wartosc);
+                        var przedzial = parseFloat(obj.przedzial);
                         if (index < 9) {
-                            var delta = wynik - parseInt(ctrl.tableResult.wyniki[index + 1].wartosc);
-                            obj.delta = delta;
+                            var intensywnosc = 60.0 * wynik/(przedzial < 1 ? 0.5 : przedzial);
+                            obj.intensywnosc = intensywnosc;
                         }
 
                     })
@@ -32,23 +33,8 @@
                     console.log(error);
                 })
         }
-
-        function getTableWithDate(){
-            Przekroj.getTableWithDate(ctrl.id, ctrl.pickerBoth.date.getFullYear(),
-                ctrl.pickerBoth.date.getMonth() + 1, ctrl.pickerBoth.date.getUTCDate(),
-                ctrl.pickerBoth.date.getHours(), ctrl.pickerBoth.date.getMinutes())
-                .then(function(result){
-                    ctrl.tableResult = result;
-                    ctrl.tableResult.wyniki.map(function (obj, index) {
-                        var wynik = parseInt(obj.wartosc);
-                        if (index < 9) {
-                            var delta = wynik - parseInt(ctrl.tableResult.wyniki[index + 1].wartosc);
-                            obj.delta = delta;
-                        }
-
-                    });
-                })
-        }
+        
+        
 
         function checkAlarm(wartosc) {
             if (wartosc >= parseInt(ctrl.tableResult.p_ostr) && wartosc < parseInt(ctrl.tableResult.p_alar)) {
@@ -60,8 +46,26 @@
             }
         }
 
+        function getTableWithDate(){
+            PunktOpad.getTableWithDate(ctrl.id, ctrl.pickerBoth.date.getFullYear(),
+                ctrl.pickerBoth.date.getMonth() + 1, ctrl.pickerBoth.date.getUTCDate(),
+                ctrl.pickerBoth.date.getHours(), ctrl.pickerBoth.date.getMinutes())
+                .then(function(result){
+                    ctrl.tableResult = result;
+                    ctrl.tableResult.wyniki.map(function (obj, index) {
+                        var wynik = parseFloat(obj.wartosc);
+                        var przedzial = parseFloat(obj.przedzial);
+                        if (index < 9) {
+                            var intensywnosc = 60.0 * wynik/(przedzial < 1 ? 0.5 : przedzial);
+                            obj.intensywnosc = intensywnosc;
+                        }
+
+                    });
+                })
+        }
+
         function getWykresH() {
-            Przekroj.getWykresH(ctrl.id).then(function (data) {
+            PunktOpad.getWykresH(ctrl.id).then(function (data) {
                 ctrl.wykresH = data;
             })
                 .catch(function (error) {
@@ -69,31 +73,17 @@
                 })
         }
 
-        function init() {
-            getImage();
-            getTable();
-            getWykresH();
-            getWykresD();
-        }
-
-        function getWykresHwithDate1() {
-            Przekroj.getWykresHwithDate(ctrl.id, ctrl.year, ctrl.month, ctrl.day, ctrl.hours, ctrl.minutes)
+        function getWykresHwithDate() {
+            PunktOpad.getWykresHwithDate(ctrl.id, ctrl.pickerBoth.date.getFullYear(),
+                ctrl.pickerBoth.date.getMonth() + 1, ctrl.pickerBoth.date.getUTCDate(),
+                ctrl.pickerBoth.date.getHours(), ctrl.pickerBoth.date.getMinutes())
                 .then(function (data) {
                     ctrl.wykresH = data;
                 })
         }
 
-        function getWykresHwithDate() {
-            Przekroj.getWykresHwithDate(ctrl.id, ctrl.pickerBoth.date.getFullYear(),
-                ctrl.pickerBoth.date.getMonth() + 1, ctrl.pickerBoth.date.getUTCDate(),
-                ctrl.pickerBoth.date.getHours(), ctrl.pickerBoth.date.getMinutes())
-                .then(function (data) {
-                    ctrl.wykresH = data;
-            })
-        }
-
         function getWykresD() {
-            Przekroj.getWykresD(ctrl.id).then(function (data) {
+            PunktOpad.getWykresD(ctrl.id).then(function (data) {
                 ctrl.wykresD = data;
             })
                 .catch(function (error) {
@@ -102,7 +92,7 @@
         }
 
         function getWykresDwithDate() {
-            Przekroj.getWykresDwithDate(ctrl.id, ctrl.pickerBoth.date.getFullYear(),
+            PunktOpad.getWykresDwithDate(ctrl.id, ctrl.pickerBoth.date.getFullYear(),
                 ctrl.pickerBoth.date.getMonth() + 1, ctrl.pickerBoth.date.getUTCDate(),
                 ctrl.pickerBoth.date.getHours(), ctrl.pickerBoth.date.getMinutes())
                 .then(function (data) {
@@ -111,11 +101,10 @@
         }
 
 
-
         ctrl.openCalendar = function (e, picker) {
             ctrl[picker].open = true;
         };
-
+        
         ctrl.pickerBoth = {
             date: new Date(),
             timepickerOptions: {
@@ -181,35 +170,19 @@
             ctrl.getWykresD();
             ctrl.pickerBoth.date = new Date();
         }
-        // ctrl.pickerDate = {
-        //     date: ctrl.date,
-        //     datepickerOptions: {
-        //         showWeeks: false,
-        //         startingDay: 1,
-        //         isOpen: false
-        //
-        //     },
-        //     timepickerOptions: {
-        //         readonlyInput: false,
-        //         showMeridian: false,
-        //         isOpen: false
-        //     }
-        // };
-        //
-        // ctrl.pickerTime = {
-        //     date: ctrl.date,
-        //     timepickerOptions: {
-        //         readonlyInput: false,
-        //         showMeridian: false
-        //     }
-        // };
 
+        function init(){
+            getOpadInt();
+            getTable();
+            getWykresD();
+            getWykresH();
+        }
 
         init();
 
+        ctrl.getOpadInt = getOpadInt;
         ctrl.checkAlarm = checkAlarm;
         ctrl.getWykresHwithDate = getWykresHwithDate;
-        ctrl.getWykresHwithDate1 = getWykresHwithDate1;
         ctrl.getTableWithDate = getTableWithDate;
         ctrl.getTable = getTable;
         ctrl.getWykresH = getWykresH;
@@ -224,7 +197,6 @@
     }
 
     angular.module('monitoring')
-        .controller('MeasurePointController', MeasurePointController);
-
+        .controller('PunktOpadowyController', PunktOpadowyController);
 
 })();

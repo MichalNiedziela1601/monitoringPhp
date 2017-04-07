@@ -1,29 +1,27 @@
 <div class="row">
     <div class="col-md-4 mar-top-1 image-contener">
-        <img ng-src="/assets/img/{{measurePointCtrl.id}}.jpg">
+        <img ng-src="/assets/img/{{punkOpadCtrl.id}}.jpg">
     </div>
     <div class="col-md-4 mar-top-1 image-contener">
-        <img ng-src="data:image/png;base64,{{measurePointCtrl.image}}" class="img-thumbnail">
+        <img ng-src="data:image/png;base64,{{punkOpadCtrl.image}}" class="img-thumbnail image-contener2">
     </div>
 
     <div class="col-md-3 mar-top-1">
         <table class="table table-condensed top-mar-1">
             <thead>
             <tr>
-                <th rowspan="2"><p>Data pomiaru</p> (gg:mm - dd.mm)</th>
-                <th colspan="2">Wartość pomiaru [cm]</th>
+                <th>Data pomiaru (gg:mm - dd.mm)</th>
+                <th >Opad [mm]</th>
+                <th>Intensywność opadu [mm/h]</th>
             </tr>
-            <tr>
-                <th>Wysokość lustra</th>
-                <th>Delta (przyrost)</th>
-            </tr>
+
             </thead>
             <tbody>
-            <tr ng-repeat="result in measurePointCtrl.tableResult.wyniki | limitTo: 9"
-                ng-class="measurePointCtrl.checkAlarm(result.wartosc)">
+            <tr ng-repeat="result in punkOpadCtrl.tableResult.wyniki | limitTo: 9"
+                ng-class="punkOpadCtrl.checkAlarm(result.wartosc)">
                 <td>{{result.czas | date : 'HH:mm - dd.MM'}}</td>
                 <td>{{result.wartosc}}</td>
-                <td>{{result.delta}}</td>
+                <td>{{result.intensywnosc}}</td>
             </tr>
             </tbody>
         </table>
@@ -36,57 +34,57 @@
 <div class="row">
 
     <div class="col-md-11 mar-top-2">
-        <img ng-src="data:image/png;base64,{{measurePointCtrl.wykresH}}"
+        <img ng-src="data:image/png;base64,{{punkOpadCtrl.wykresH}}"
              class="img-responsive top-mar-1 wykres_h1"></div>
 
     <!--<div class="col-md-11 mar-top-1">-->
     <!--<form class="form-inline">-->
     <!--<div class="form-group">-->
     <!--<label for="year">Year:</label>-->
-    <!--<input type="number" id="year" class="form-control" ng-model="measurePointCtrl.year" min="2009">-->
+    <!--<input type="number" id="year" class="form-control" ng-model="punkOpadCtrl.year" min="2009">-->
     <!--</div>-->
     <!--<div class="form-group">-->
     <!--<label for="month">Month:</label>-->
-    <!--<input type="number" id="month" class="form-control" ng-model="measurePointCtrl.month" min="1" max="12">-->
+    <!--<input type="number" id="month" class="form-control" ng-model="punkOpadCtrl.month" min="1" max="12">-->
     <!--</div>-->
     <!--<div class="form-group">-->
     <!--<label for="day">Day:</label>-->
-    <!--<input type="number" id="day" class="form-control" ng-model="measurePointCtrl.day" min="1" max="31">-->
+    <!--<input type="number" id="day" class="form-control" ng-model="punkOpadCtrl.day" min="1" max="31">-->
     <!--</div>-->
     <!--<div class="form-group">-->
     <!--<label for="hours">Hour:</label>-->
-    <!--<input type="number" id="hours" class="form-control" ng-model="measurePointCtrl.hours" min="0" max="23">-->
+    <!--<input type="number" id="hours" class="form-control" ng-model="punkOpadCtrl.hours" min="0" max="23">-->
     <!--</div>-->
     <!--<div class="form-group">-->
     <!--<label for="minutes">Minutes:</label>-->
-    <!--<input type="number" id="minutes" class="form-control" ng-model="measurePointCtrl.minutes" min="0" max="59">-->
+    <!--<input type="number" id="minutes" class="form-control" ng-model="punkOpadCtrl.minutes" min="0" max="59">-->
     <!--</div>-->
-    <!--<button type="submit" class="btn btn-default" ng-click="measurePointCtrl.getWykresHwithDate1()">Pokaz</button>-->
+    <!--<button type="submit" class="btn btn-default" ng-click="punkOpadCtrl.getWykresHwithDate1()">Pokaz</button>-->
     <!--</form>-->
     <!--</div>-->
 
     <div class="col-md-11 mar-top-1">
         <div class="col-md-3">
-            <button ng-click="measurePointCtrl.minus1h()"
+            <button ng-click="punkOpadCtrl.minus1h()"
                     class="btn btn-primary pull-left">Wstecz 1 godz
             </button>
-            <button ng-click="measurePointCtrl.minus30()"
+            <button ng-click="punkOpadCtrl.minus30()"
                     class="btn btn-primary pull-left">Wstecz 30 min
             </button>
         </div>
 
         <div class="col-md-2 col-md-offset-2">
-            <button ng-click="measurePointCtrl.now()"
+            <button ng-click="punkOpadCtrl.now()"
                     class="btn btn-primary">Stan aktualny
             </button>
         </div>
 
 
         <div class="col-md-3 col-md-offset-2">
-            <button ng-click="measurePointCtrl.plus1h()"
+            <button ng-click="punkOpadCtrl.plus1h()"
                     class="btn btn-primary pull-right">Do przodu 1 godz
             </button>
-            <button ng-click="measurePointCtrl.plus30()"
+            <button ng-click="punkOpadCtrl.plus30()"
                     class="btn btn-primary pull-right">Do przodu 30 min
             </button>
         </div>
@@ -94,23 +92,23 @@
 
 
     <div class="col-md-8 mar-top-1">
-        <form class="form-inline" ng-submit="measurePointCtrl.submit()">
+        <form class="form-inline" ng-submit="punkOpadCtrl.submit()">
             <div class="form-group">
                 <label class="col-sm-2 control-label">Data</label>
                 <div class="col-sm-10">
                     <p class="input-group">
                         <!--<input type="text" class="form-control" datetime-picker="dd-MM-yyyy"-->
-                        <!--ng-model="measurePointCtrl.pickerDate.date" -->
-                        <!--is-open="measurePointCtrl.pickerDate.datepickerOptions.open"-->
-                        <!--enable-time="false" datepicker-options="measurePointCtrl.pickerDate.datepickerOptions"-->
+                        <!--ng-model="punkOpadCtrl.pickerDate.date" -->
+                        <!--is-open="punkOpadCtrl.pickerDate.datepickerOptions.open"-->
+                        <!--enable-time="false" datepicker-options="punkOpadCtrl.pickerDate.datepickerOptions"-->
                         <!--close-on-date-selection="false" datepicker-append-to-body="true"/>-->
                         <input type="text" class="form-control"
-                               datetime-picker="dd-MM-yyyy HH:mm" ng-model="measurePointCtrl.pickerBoth.date"
-                               is-open="measurePointCtrl.pickerBoth.open"
-                               timepicker-options="measurePointCtrl.pickerBoth.timepickerOptions"/>
+                               datetime-picker="dd-MM-yyyy HH:mm" ng-model="punkOpadCtrl.pickerBoth.date"
+                               is-open="punkOpadCtrl.pickerBoth.open"
+                               timepicker-options="punkOpadCtrl.pickerBoth.timepickerOptions"/>
                         <span class="input-group-btn">
                   <button type="button" class="btn btn-default"
-                          ng-click="measurePointCtrl.openCalendar($event, 'pickerBoth')">
+                          ng-click="punkOpadCtrl.openCalendar($event, 'pickerBoth')">
                       <i class="glyphicon glyphicon-calendar"></i></button>
               </span>
                     </p>
@@ -121,12 +119,12 @@
             <!--<div class="col-sm-10">-->
             <!--<p class="input-group">-->
             <!--<input type="text" class="form-control" datetime-picker="HH:mm"-->
-            <!--ng-model="measurePointCtrl.pickerDate.date"-->
-            <!--is-open="measurePointCtrl.pickerDate.timepickerOptions.open"-->
-            <!--enable-date="false" timepicker-options="measurePointCtrl.pickerDate.timepickerOptions"-->
+            <!--ng-model="punkOpadCtrl.pickerDate.date"-->
+            <!--is-open="punkOpadCtrl.pickerDate.timepickerOptions.open"-->
+            <!--enable-date="false" timepicker-options="punkOpadCtrl.pickerDate.timepickerOptions"-->
             <!--close-on-selection="true" datepicker-append-to-body="true"/>-->
             <!--<span class="input-group-btn">-->
-            <!--<button type="button" class="btn btn-default" ng-click="measurePointCtrl.openCalendar($event, 'pickerDate')">-->
+            <!--<button type="button" class="btn btn-default" ng-click="punkOpadCtrl.openCalendar($event, 'pickerDate')">-->
             <!--<i class="glyphicon glyphicon-calendar"></i></button>-->
             <!--</span>-->
             <!--</p>-->
@@ -140,6 +138,6 @@
 </div>
 <div class="row">
     <div class="col-md-11 mar-top-2 mar-bottom-3">
-        <img ng-src="data:image/png;base64,{{measurePointCtrl.wykresD}}"
+        <img ng-src="data:image/png;base64,{{punkOpadCtrl.wykresD}}"
              class="img-responsive top-mar-1 wykres_h1"></div>
 </div>

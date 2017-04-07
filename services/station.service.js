@@ -18,10 +18,9 @@
                             stations.opadowe.push(station)
                         }
                     });
-                    console.log(stations);
                     return stations;
                 })
-            },
+            }
 
 
         };

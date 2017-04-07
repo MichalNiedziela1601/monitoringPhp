@@ -101,3 +101,89 @@ display: none;
   margin-top: 1em;
 })
 }
+
+thead {
+  th {
+    vertical-align: middle;
+    text-align: center;
+  }
+}
+
+.border() {
+  border: 2px solid black !important;
+}
+.table {
+  thead, tbody, tr, td, th {
+    .border();
+    text-align: center;
+  }
+}
+
+.generate-pd-top(@n, @i: 0) when (@i =< @n) {
+  .pd-top-@{i} {
+    padding-top: (@i * 10px);
+  }
+  .generate-pd-top(@n, (@i + 1));
+}
+
+.generate-pd-top(8);
+
+.generate-mar-top(@n, @i: 0) when (@i =< @n) {
+  .mar-top-@{i} {
+    margin-top: (@i * 10px);
+  }
+  .generate-mar-top(@n, (@i + 1));
+}
+
+.generate-mar-top(8);
+
+.generate-mar-bottom(@n, @i: 0) when (@i =< @n) {
+  .mar-bottom-@{i} {
+    margin-bottom: (@i * 10px);
+  }
+  .generate-mar-bottom(@n, (@i + 1));
+}
+
+.generate-mar-bottom(8);
+.poziom_ostrz {
+  background-color: #fa0;
+  color: #000;
+}
+
+.poziom_alarm {
+  background-color: #f00;
+  color: #000;
+}
+
+.wykres_h1 {
+  height: 270px;
+  max-width: 100%;
+}
+
+.image-contener {
+  > img {
+    max-height: 350px;
+    width: 100%;
+  }
+}
+
+.image-contener2 {
+  max-width: 80% !important;
+}
+
+.panel-heading {
+  padding: 4px 15px 0px 15px;
+}
+
+.menu {
+  li {
+    margin-bottom: 4px;
+    a {
+      color: black;
+
+    }
+  }
+}
+
+
+
